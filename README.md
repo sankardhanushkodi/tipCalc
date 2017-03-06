@@ -36,7 +36,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Challenges encountered: I posted the Licecap created GIF to imgur at http://imgur.com/eL7MWdi but it is not visible here yet.  Still trying to figure out why.
 
 ## License
 
