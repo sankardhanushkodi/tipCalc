@@ -23,6 +23,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.amountText.becomeFirstResponder()
+        let defaults = UserDefaults.standard
+        let intValue = defaults.integer(forKey: "default_tip")
+        tipPercentLabel.text = String(intValue)
+        tipSlider.setValue(Float(intValue), animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +46,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateTip(_ sender: Any) {
-        print("Amount is \(amountText.text)")
         let amount = Float(amountText.text!) ?? 0
         let tip = amount * tipSlider.value / 100
         tipLabel.text = String(format: "$%.2f", tip)
