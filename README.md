@@ -28,7 +28,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://imgur.com/a/7y0Sj' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+I posted the Licecap created GIF to imgur at http://imgur.com/eL7MWdi but it is not visible here yet.  Still trying to figure out why.
 
 <img src='http://imgur.com/eL7MWdi' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
