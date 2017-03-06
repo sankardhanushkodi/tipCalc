@@ -12,6 +12,10 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultTipText: UITextField!
     
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,8 +23,9 @@ class SettingsViewController: UIViewController {
         let defaults = UserDefaults.standard
         let intValue = defaults.integer(forKey: "default_tip")
         defaultTipText.text = String(intValue)
+        defaultTipText.becomeFirstResponder()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -28,10 +33,15 @@ class SettingsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        let defaultTipPercent = Int(defaultTipText.text!) ?? 20
+        
+        // save default tip percent
         let defaults = UserDefaults.standard
-        defaults.set(Int(defaultTipText.text!) ?? 20, forKey: "default_tip")
+        defaults.set(defaultTipPercent, forKey: "default_tip")
         defaults.synchronize()
-        print("Saved tip as:\(defaultTipText.text)")
+        print("Saved default tip as:\(defaultTipText.text)")
+        
     }
     
     /*

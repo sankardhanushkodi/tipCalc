@@ -24,12 +24,33 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.amountText.becomeFirstResponder()
-        let defaults = UserDefaults.standard
-        let intValue = defaults.integer(forKey: "default_tip")
-        tipPercentLabel.text = String(intValue)
-        tipSlider.setValue(Float(intValue), animated: true)
+        setupSlider()
+        
     }
 
+    // function to setup the initial value for slider (when the view first loads and when the view reappears after settings are changed
+    func setupSlider() {
+        let defaults = UserDefaults.standard
+        let tipValue = defaults.integer(forKey: "default_tip")
+        tipPercentLabel.text = String(tipValue)
+        tipSlider.setValue(Float(tipValue), animated: true)
+        print("Default tip value being updated in slider:\(tipValue) with tipSlider value:\(String(tipSlider.value))")
+        calcTip()
+    }
+
+    // refactoring calculate to separtae method since it is called directly rom viewWillAppear as well as from events on the view
+    func calcTip() {
+        let amount = Float(amountText.text!) ?? 0
+        let tip = amount * tipSlider.value / 100
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", tip+amount)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupSlider()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,10 +67,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateTip(_ sender: Any) {
-        let amount = Float(amountText.text!) ?? 0
-        let tip = amount * tipSlider.value / 100
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", tip+amount)
+        calcTip()
     }
 }
 
