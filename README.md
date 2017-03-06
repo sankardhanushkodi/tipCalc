@@ -34,12 +34,15 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/6kWM8GG.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+The user story walkthrough is available at http://i.imgur.com/6kWM8GG.gifv
+
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Challenges encountered: 
-1. Had trouble with the imgur URL since I was using the blog URL instead of the image URL.  Resolved now.
+1. Had trouble with the imgur URL since I was using the blog URL instead of the image URL.  But still can't get .md file to use the URL directly.
 2. Had to refactor code to call calcTip from multiple places (especially when the view reappears after the settings are changed).  Did not know how to invoke the existing action method since it had other params (sender).  But eventually created an internal method for the code to be called in both events.
 
 ## License
